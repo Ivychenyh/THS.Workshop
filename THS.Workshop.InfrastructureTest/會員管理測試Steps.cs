@@ -1,10 +1,11 @@
-﻿using System;
+﻿using System.Collections.Generic;
 using System.Linq;
 using System.Threading;
 using TechTalk.SpecFlow;
 using TechTalk.SpecFlow.Assist;
 using THS.Workshop.Infrastructure.DataAccess.EntityModel;
 using THS.Workshop.Infrastructure.DataAccess.Repository;
+using THS.Workshop.Infrastructure.DomainModel;
 using THS.Workshop.Infrastructure.DomainModel.Member;
 
 namespace THS.Workshop.InfrastructureTest
@@ -18,15 +19,15 @@ namespace THS.Workshop.InfrastructureTest
             var request = table.CreateInstance<InsertRequest>();
             this.ScenarioContext.Set(request, "request");
         }
-        
+
         [When(@"調用新增")]
         public void When調用新增()
         {
             var repository = new MemberRepository();
-            var requset    = this.ScenarioContext.Get<InsertRequest>("request");
-            var count      = repository.InsertAsync(requset, CancellationToken.None).Result;
+            var requset = this.ScenarioContext.Get<InsertRequest>("request");
+            var count = repository.InsertAsync(requset, CancellationToken.None).Result;
         }
-        
+
         [Then(@"預期資料庫的 Member 資料表應有以下資料")]
         public void Then預期資料庫的Member資料表應有以下資料(Table expected)
         {
@@ -37,6 +38,7 @@ namespace THS.Workshop.InfrastructureTest
                 expected.CompareToSet(actual);
             }
         }
+
         [Given(@"資料庫Member已存在以下資料")]
         public void Given資料庫Member已存在以下資料(Table table)
         {
@@ -48,36 +50,66 @@ namespace THS.Workshop.InfrastructureTest
                 db.SaveChanges();
             }
         }
-        
+
         [Given(@"前端應傳來以下編輯請求資料")]
         public void Given前端應傳來以下編輯請求資料(Table table)
         {
-            var request    = table.CreateInstance<UpdateRequest>();
-            this.ScenarioContext.Set(request,"request");
+            var request = table.CreateInstance<UpdateRequest>();
+            this.ScenarioContext.Set(request, "request");
         }
-        
+
         [When(@"調用編輯")]
         public void When調用編輯()
         {
-            var request    = this.ScenarioContext.Get<UpdateRequest>("request");
+            var request = this.ScenarioContext.Get<UpdateRequest>("request");
             var repository = new MemberRepository();
-            var count      = repository.UpdateAsync(request, CancellationToken.None).Result;
+            var count = repository.UpdateAsync(request, CancellationToken.None).Result;
         }
+
         [Given(@"前端應傳來以下刪除請求資料")]
         public void Given前端應傳來以下刪除請求資料(Table table)
         {
             var request = table.CreateInstance<DeleteRequest>();
             this.ScenarioContext.Set(request, "request");
         }
-        
+
         [When(@"調用刪除")]
         public void When調用刪除()
         {
-            var request     = this.ScenarioContext.Get<DeleteRequest>("request");
-            var repository  = new MemberRepository();
+            var request = this.ScenarioContext.Get<DeleteRequest>("request");
+            var repository = new MemberRepository();
             var count = repository.DeleteAsync(request, CancellationToken.None);
         }
 
+        [Given(@"前端應傳來以下查詢請求資料")]
+        public void Given前端應傳來以下查詢請求資料(Table table)
+        {
+            var request = table.CreateInstance<QueryRequest>();
+            this.ScenarioContext.Set(request, "request");
+        }
 
+        [Given(@"前端應穿來以下GridState資料")]
+        public void Given前端應穿來以下GridState資料(Table table)
+        {
+            var gridState = table.CreateInstance<GridState>();
+            this.ScenarioContext.Set(gridState, "gridState");
+        }
+
+        [When(@"調用查詢")]
+        public void When調用查詢()
+        {
+            var request = this.ScenarioContext.Get<QueryRequest>("request");
+            var gridState = this.ScenarioContext.Get<GridState>("gridState");
+            var repository = new MemberRepository();
+            var actual = repository.QueryAsync(request, gridState, CancellationToken.None).Result;
+            this.ScenarioContext.Set(actual, "actual");
+        }
+
+        [Then(@"預期查詢結果有以下資料")]
+        public void Then預期查詢結果有以下資料(Table expected)
+        {
+            var actual = this.ScenarioContext.Get<List<Member>>("actual");
+            expected.CompareToSet(actual);
+        }
     }
 }
