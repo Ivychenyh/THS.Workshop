@@ -37,6 +37,33 @@ namespace THS.Workshop.InfrastructureTest
                 expected.CompareToSet(actual);
             }
         }
+        [Given(@"資料庫Member已存在以下資料")]
+        public void Given資料庫Member已存在以下資料(Table table)
+        {
+            //塞入member資料
+            var toDb = table.CreateSet<Member>();
+            using (var db = MemberDbContext.Create())
+            {
+                db.Members.AddRange(toDb);
+                db.SaveChanges();
+            }
+        }
+        
+        [Given(@"前端應傳來以下編輯請求資料")]
+        public void Given前端應傳來以下編輯請求資料(Table table)
+        {
+            var request    = table.CreateInstance<UpdateRequest>();
+            this.ScenarioContext.Set(request,"request");
+        }
+        
+        [When(@"調用編輯")]
+        public void When調用編輯()
+        {
+            var request    = this.ScenarioContext.Get<UpdateRequest>("request");
+            var repository = new MemberRepository();
+            var count      = repository.UpdateAsync(request, CancellationToken.None).Result;
+        }
+
 
     }
 }

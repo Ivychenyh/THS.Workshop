@@ -1,4 +1,5 @@
-﻿using System.Threading;
+﻿using System.Data.Entity;
+using System.Threading;
 using System.Threading.Tasks;
 using THS.Infrastructure;
 using THS.Workshop.Infrastructure.DataAccess.EntityModel;
@@ -19,6 +20,21 @@ namespace THS.Workshop.Infrastructure.DataAccess.Repository
                 db.Members.Add(toDB);
                 result = await db.SaveChangesAsync(cancel);
             }
+            return result;
+        }
+
+        public async Task<int> UpdateAsync(UpdateRequest request, CancellationToken cancel)
+        {
+            var result = 0;
+            var toDB = MemberMapper.Map<Member>(request);
+            using (var db = MemberDbContext.Create())
+            {
+                db.Members.Attach(toDB);
+                db.Entry(toDB).State = EntityState.Modified;
+                result               = await db.SaveChangesAsync(cancel);
+
+            }
+
             return result;
         }
     }

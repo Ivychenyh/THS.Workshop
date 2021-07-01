@@ -31,6 +31,7 @@ namespace THS.Workshop.Infrastructure
 
             var cfg = new MapperConfigurationExpression();
             cfg.CreateMap<InsertRequest, Member>();
+            cfg.CreateMap<UpdateRequest, Member>();
 
             var mapperConfig = new MapperConfiguration(cfg);
             s_mapper = new Mapper(mapperConfig);
