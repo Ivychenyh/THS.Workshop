@@ -68,6 +68,7 @@
     <Compile Include="DataAccess\EntityModel\MemberDbContext.cs" />
     <Compile Include="DataAccess\MemberDbContext.cs" />
     <Compile Include="DataAccess\Repository\memberRepository.cs" />
+    <Compile Include="DomainModel\Member\DeleteRequest.cs" />
     <Compile Include="DomainModel\Member\InsertRequest.cs" />
     <Compile Include="DomainModel\Member\UpdateRequest.cs" />
     <Compile Include="Mappers\MemberMapper.cs" />

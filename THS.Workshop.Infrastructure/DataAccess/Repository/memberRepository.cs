@@ -37,5 +37,19 @@ namespace THS.Workshop.Infrastructure.DataAccess.Repository
 
             return result;
         }
+
+        public async Task<int> DeleteAsync(DeleteRequest request, CancellationToken cancel)
+        {
+            var toDb = MemberMapper.Map<Member>(request);
+            var result    = 0;
+            using (var db = MemberDbContext.Create())
+            {
+                db.Members.Attach(toDb);
+                db.Entry(toDb).State = EntityState.Deleted;
+                result = await db.SaveChangesAsync(cancel);
+            }
+
+            return result;
+        }
     }
 }

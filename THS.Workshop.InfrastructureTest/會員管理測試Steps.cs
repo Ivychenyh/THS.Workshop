@@ -63,6 +63,20 @@ namespace THS.Workshop.InfrastructureTest
             var repository = new MemberRepository();
             var count      = repository.UpdateAsync(request, CancellationToken.None).Result;
         }
+        [Given(@"前端應傳來以下刪除請求資料")]
+        public void Given前端應傳來以下刪除請求資料(Table table)
+        {
+            var request = table.CreateInstance<DeleteRequest>();
+            this.ScenarioContext.Set(request, "request");
+        }
+        
+        [When(@"調用刪除")]
+        public void When調用刪除()
+        {
+            var request     = this.ScenarioContext.Get<DeleteRequest>("request");
+            var repository  = new MemberRepository();
+            var count = repository.DeleteAsync(request, CancellationToken.None);
+        }
 
 
     }
