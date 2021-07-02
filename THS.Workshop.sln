@@ -9,6 +9,8 @@ Project("{00D1A9C2-B5F0-4AF3-8072-F6C62B433612}") = "THS.Workshop.DB", "THS.Work
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "THS.Workshop.InfrastructureTest", "THS.Workshop.InfrastructureTest\THS.Workshop.InfrastructureTest.csproj", "{37F333BC-2C63-4E46-9194-486E573651E9}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "THS.Workshop.WebApi", "THS.Workshop.WebApi\THS.Workshop.WebApi.csproj", "{048CBABA-4E0D-4D60-9B36-8A2F314B5501}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -29,6 +31,10 @@ Global
 		{37F333BC-2C63-4E46-9194-486E573651E9}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{37F333BC-2C63-4E46-9194-486E573651E9}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{37F333BC-2C63-4E46-9194-486E573651E9}.Release|Any CPU.Build.0 = Release|Any CPU
+		{048CBABA-4E0D-4D60-9B36-8A2F314B5501}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{048CBABA-4E0D-4D60-9B36-8A2F314B5501}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{048CBABA-4E0D-4D60-9B36-8A2F314B5501}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{048CBABA-4E0D-4D60-9B36-8A2F314B5501}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

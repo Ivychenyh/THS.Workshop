@@ -73,6 +73,7 @@
     <Compile Include="DomainModel\Member\InsertRequest.cs" />
     <Compile Include="DomainModel\Member\QueryRequest.cs" />
     <Compile Include="DomainModel\Member\UpdateRequest.cs" />
+    <Compile Include="Logic\MemberWorkflow.cs" />
     <Compile Include="Mappers\MemberMapper.cs" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
