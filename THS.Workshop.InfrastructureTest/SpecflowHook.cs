@@ -3,19 +3,29 @@ using System.Collections.Generic;
 using System.Data.Entity.SqlServer;
 using System.Diagnostics.Contracts;
 using System.Linq;
+using System.Net.Http;
 using System.Text;
+using System.Web.Http;
 using TechTalk.SpecFlow;
 using THS.Workshop.Infrastructure.DataAccess.EntityModel;
+using Microsoft.Owin.Hosting;
+using Owin;
+using THS.Workshop.WebApi;
 
 namespace THS.Workshop.InfrastructureTest
 {
+    
     [Binding]
     public class SpecflowHook
     {
-        public static readonly string   TestData     = "出發吧，跟我一起進入偉大的航道";
-        public static readonly DateTime TestDateTime = new DateTime(1900, 1, 1, 0, 0, 0);
-        public static readonly string   TestUserId   = "TEST_USER";
+        public static readonly string      TestData     = "出發吧，跟我一起進入偉大的航道";
+        public static readonly DateTime    TestDateTime = new DateTime(1900, 1, 1, 0, 0, 0);
+        public static readonly string      TestUserId   = "TEST_USER";
+        private const          string      HOST_ADDRESS = "https://localhost:44316/";
+        private static         IDisposable s_webApp;
+        public static          HttpClient  s_client;
 
+        
         [AfterScenario]
         public void AfterScenario()
         {
@@ -25,6 +35,7 @@ namespace THS.Workshop.InfrastructureTest
         [AfterTestRun]
         public static void AfterTestRun()
         {
+            s_webApp.Dispose();
             using (var dbContext = MemberDbContext.Create())
             {
                 if (dbContext.Database.Exists())
@@ -54,7 +65,29 @@ namespace THS.Workshop.InfrastructureTest
 
                 dbContext.Database.Initialize(true);
             }
+            s_webApp = WebApp.Start<Startup>(HOST_ADDRESS);
+            Console.WriteLine("Web API started!");
+            s_client             = new HttpClient();
+            s_client.BaseAddress = new Uri(HOST_ADDRESS);
+            Console.WriteLine("HttpClient started!");
+           
         }
+
+        public class Startup
+        {
+            public void Configuration(IAppBuilder app)
+            {
+                var configuration = new HttpConfiguration();
+                WebApiConfig.Register(configuration);
+#if DEBUG
+                app.UseErrorPage();
+#endif
+                app.UseWelcomePage("/Welcome");
+                app.UseWebApi(configuration);
+
+                //        }
+            }
+        } 
 
         public string DeleteAll()
         {
