@@ -363,6 +363,110 @@ this.ScenarioInitialize(scenarioInfo);
             }
             this.ScenarioCleanup();
         }
+        
+        [Microsoft.VisualStudio.TestTools.UnitTesting.TestMethodAttribute()]
+        [Microsoft.VisualStudio.TestTools.UnitTesting.DescriptionAttribute("查詢會員資料")]
+        [Microsoft.VisualStudio.TestTools.UnitTesting.TestPropertyAttribute("FeatureTitle", "會員管理API測試")]
+        public virtual void 查詢會員資料()
+        {
+            string[] tagsOfScenario = ((string[])(null));
+            System.Collections.Specialized.OrderedDictionary argumentsOfScenario = new System.Collections.Specialized.OrderedDictionary();
+            TechTalk.SpecFlow.ScenarioInfo scenarioInfo = new TechTalk.SpecFlow.ScenarioInfo("查詢會員資料", null, tagsOfScenario, argumentsOfScenario, this._featureTags);
+#line 52
+this.ScenarioInitialize(scenarioInfo);
+#line hidden
+            bool isScenarioIgnored = default(bool);
+            bool isFeatureIgnored = default(bool);
+            if ((tagsOfScenario != null))
+            {
+                isScenarioIgnored = tagsOfScenario.Where(__entry => __entry != null).Where(__entry => String.Equals(__entry, "ignore", StringComparison.CurrentCultureIgnoreCase)).Any();
+            }
+            if ((this._featureTags != null))
+            {
+                isFeatureIgnored = this._featureTags.Where(__entry => __entry != null).Where(__entry => String.Equals(__entry, "ignore", StringComparison.CurrentCultureIgnoreCase)).Any();
+            }
+            if ((isScenarioIgnored || isFeatureIgnored))
+            {
+                testRunner.SkipScenario();
+            }
+            else
+            {
+                this.ScenarioStart();
+                TechTalk.SpecFlow.Table table12 = new TechTalk.SpecFlow.Table(new string[] {
+                            "Id",
+                            "Email",
+                            "Name",
+                            "Age"});
+                table12.AddRow(new string[] {
+                            "1",
+                            "yao@aa.bb1",
+                            "yao1",
+                            "18"});
+                table12.AddRow(new string[] {
+                            "2",
+                            "yao@aa.bb2",
+                            "yao2",
+                            "18"});
+                table12.AddRow(new string[] {
+                            "3",
+                            "yao@aa.bb3",
+                            "yao3",
+                            "18"});
+                table12.AddRow(new string[] {
+                            "4",
+                            "yao@aa.bb4",
+                            "yao4",
+                            "18"});
+                table12.AddRow(new string[] {
+                            "5",
+                            "yao@aa.bb5",
+                            "yao5",
+                            "18"});
+#line 53
+ testRunner.Given("資料庫Member已存在以下資料", ((string)(null)), table12, "Given ");
+#line hidden
+                TechTalk.SpecFlow.Table table13 = new TechTalk.SpecFlow.Table(new string[] {
+                            "Email",
+                            "Name",
+                            "Age"});
+                table13.AddRow(new string[] {
+                            "yao@aa.bb1",
+                            "yao1",
+                            "18"});
+#line 60
+ testRunner.And("前端應傳來以下查詢請求資料", ((string)(null)), table13, "And ");
+#line hidden
+                TechTalk.SpecFlow.Table table14 = new TechTalk.SpecFlow.Table(new string[] {
+                            "PageSize",
+                            "PageIndex"});
+                table14.AddRow(new string[] {
+                            "10",
+                            "0"});
+#line 63
+ testRunner.And("前端應穿來以下GridState資料", ((string)(null)), table14, "And ");
+#line hidden
+#line 66
+ testRunner.When("調用查詢Get  \'api/member/Get\'", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "When ");
+#line hidden
+#line 67
+ testRunner.Then("預期HttpStatusCode為200", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "Then ");
+#line hidden
+                TechTalk.SpecFlow.Table table15 = new TechTalk.SpecFlow.Table(new string[] {
+                            "ID",
+                            "Email",
+                            "Name",
+                            "Age"});
+                table15.AddRow(new string[] {
+                            "1",
+                            "yao@aa.bb1",
+                            "yao1",
+                            "18"});
+#line 68
+ testRunner.Then("預期查詢結果有以下資料", ((string)(null)), table15, "Then ");
+#line hidden
+            }
+            this.ScenarioCleanup();
+        }
     }
 }
 #pragma warning restore

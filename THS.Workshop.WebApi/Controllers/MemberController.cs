@@ -2,23 +2,22 @@
 using System.Threading;
 using System.Threading.Tasks;
 using System.Web.Http;
+using Newtonsoft.Json;
 using THS.Workshop.Infrastructure.DomainModel.Member;
 using THS.Workshop.Infrastructure.Logic;
+using THS.Workshop.WebApi.ServiceModels;
 
 namespace THS.Workshop.WebApi.Controllers
 {
     public class MemberController : ApiController
     {
-        // GET: api/Member
-        public IEnumerable<string> Get()
-        {
-            return new string[] { "value1", "value2" };
-        }
 
-        // GET: api/Member/5
-        public string Get(int id)
+        public  async Task<IHttpActionResult> Get(string request)
         {
-            return "value";
+            var filterRequest = JsonConvert.DeserializeObject<MemberFilterRequest>(request);
+            var service       = new MemberWorkflow();
+            var result        = await service.GetAsync(filterRequest.Filter, filterRequest.GridState, CancellationToken.None);
+            return this.Ok(result);
         }
 
         //[HttpPost]

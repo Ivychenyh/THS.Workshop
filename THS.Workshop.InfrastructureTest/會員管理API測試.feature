@@ -48,3 +48,23 @@ Scenario: 刪除一筆會員資料
 	Then 預期HttpStatusCode為200
 	And 預期資料庫的Member資料表有以下資料
 		| Id | Name | Age | Email     |
+
+Scenario: 查詢會員資料
+	Given 資料庫Member已存在以下資料
+		| Id | Email      | Name | Age |
+		| 1  | yao@aa.bb1 | yao1 | 18  |
+		| 2  | yao@aa.bb2 | yao2 | 18  |
+		| 3  | yao@aa.bb3 | yao3 | 18  |
+		| 4  | yao@aa.bb4 | yao4 | 18  |
+		| 5  | yao@aa.bb5 | yao5 | 18  |
+	And 前端應傳來以下查詢請求資料
+		 | Email	  | Name | Age |
+		 | yao@aa.bb1 | yao1 | 18  | 
+	And 前端應穿來以下GridState資料
+		| PageSize | PageIndex |
+		| 10       | 0         |
+	When 調用查詢Get  'api/member/Get'
+	Then 預期HttpStatusCode為200
+	Then 預期查詢結果有以下資料
+	| ID | Email	 | Name  | Age |
+	| 1	 | yao@aa.bb1| yao1  | 18  | 
