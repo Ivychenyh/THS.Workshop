@@ -24,6 +24,12 @@ namespace THS.Workshop.Infrastructure.Logic
             return await repository.UpdateAsync(request, cancel);
 
         }
+
+        public async Task<int> DeleteAsync(DeleteRequest request, CancellationToken cancel)
+        {
+            var repository = new MemberRepository();
+            return await repository.DeleteAsync(request, cancel);
+        }
     }
 
     public interface IMemberWorkflow
@@ -31,5 +37,7 @@ namespace THS.Workshop.Infrastructure.Logic
         Task<int> Insert(InsertRequest request, CancellationToken cancel);
 
         Task<int> UpdateAsync(UpdateRequest request, CancellationToken cancel);
+
+        Task<int> DeleteAsync(DeleteRequest request, CancellationToken cancel);
     }
 }

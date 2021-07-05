@@ -36,3 +36,15 @@ Scenario: 編輯會員資料
 	Then 預期資料庫的Member資料表有以下資料
 		| Id | Name		 | Age | Email		 |
 		| 2  | ivy Chen  | 19  | ivy@aa.bb	 |
+
+Scenario: 刪除一筆會員資料
+	Given 資料庫的Member資料表已存在以下資料
+		| Id | Name | Age | Email     |
+		| 1  | ivy  | 18  | ivy@aa.bb |
+	Given 前端傳來以下DeleteRequest
+		| Id | 
+		| 1  | 
+	When 調用Delete 'api/member/Delete'
+	Then 預期HttpStatusCode為200
+	And 預期資料庫的Member資料表有以下資料
+		| Id | Name | Age | Email     |

@@ -80,6 +80,23 @@ namespace THS.Workshop.InfrastructureTest
 
         }
 
+        [Given(@"前端傳來以下DeleteRequest")]
+        public void Given前端傳來以下DeleteRequest(Table table)
+        {
+            var request = table.CreateInstance<DeleteRequest>();
+            this.ScenarioContext.Set(request, "request");
+        }
+        
+        [When(@"調用Delete '(.*)'")]
+        public void When調用Delete(string url)
+        {
+            var request             = this.ScenarioContext.Get<DeleteRequest>("request");
+            var content             = new StringContent(JsonConvert.SerializeObject(request), Encoding.UTF8, "application/json");
+            var response = SpecflowHook.s_client.SendAsync(new HttpRequestMessage(HttpMethod.Delete, url){ Content = content} ).Result;
+            this.ScenarioContext.Set(response.StatusCode, "statusCode");
+        }
+
+
         [When(@"DoNothing")]
         public void WhenDoNothing()
         {

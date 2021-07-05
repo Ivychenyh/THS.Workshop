@@ -31,12 +31,19 @@ namespace THS.Workshop.WebApi.Controllers
             return this.Ok(result);
         }
 
-        [HttpPut]
         public async Task<IHttpActionResult> Put(UpdateRequest request)
         {
             var service = new MemberWorkflow();
             var result = await service.UpdateAsync(request, CancellationToken.None);
             return this.Ok(result);
         }
+
+        public async Task<IHttpActionResult> Delete(DeleteRequest request)
+        {
+            var service = new MemberWorkflow();
+            var result  = await service.DeleteAsync(request, CancellationToken.None);
+            return this.Ok(result);
+        } 
+
     }
 }
