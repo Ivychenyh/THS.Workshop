@@ -18,10 +18,18 @@ namespace THS.Workshop.Infrastructure.Logic
             return await repository.InsertAsync(request, cancel);
         }
 
+        public async Task<int> UpdateAsync(UpdateRequest request, CancellationToken cancel)
+        {
+            var repository = new MemberRepository();
+            return await repository.UpdateAsync(request, cancel);
+
+        }
     }
 
     public interface IMemberWorkflow
     {
         Task<int> Insert(InsertRequest request, CancellationToken cancel);
+
+        Task<int> UpdateAsync(UpdateRequest request, CancellationToken cancel);
     }
 }

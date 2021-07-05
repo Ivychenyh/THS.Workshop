@@ -119,30 +119,30 @@ this.ScenarioInitialize(scenarioInfo);
             else
             {
                 this.ScenarioStart();
-                TechTalk.SpecFlow.Table table3 = new TechTalk.SpecFlow.Table(new string[] {
+                TechTalk.SpecFlow.Table table9 = new TechTalk.SpecFlow.Table(new string[] {
                             "Email",
                             "Name",
                             "Age"});
-                table3.AddRow(new string[] {
+                table9.AddRow(new string[] {
                             "yao@aa.bb",
                             "yao",
                             "18"});
 #line 7
- testRunner.Given("前端應傳來以下新增請求資料", ((string)(null)), table3, "Given ");
+ testRunner.Given("前端應傳來以下新增請求資料", ((string)(null)), table9, "Given ");
 #line hidden
 #line 10
  testRunner.When("調用新增", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "When ");
 #line hidden
-                TechTalk.SpecFlow.Table table4 = new TechTalk.SpecFlow.Table(new string[] {
+                TechTalk.SpecFlow.Table table10 = new TechTalk.SpecFlow.Table(new string[] {
                             "Email",
                             "Name",
                             "Age"});
-                table4.AddRow(new string[] {
+                table10.AddRow(new string[] {
                             "yao@aa.bb",
                             "yao",
                             "18"});
 #line 11
- testRunner.Then("預期資料庫的 Member 資料表應有以下資料", ((string)(null)), table4, "Then ");
+ testRunner.Then("預期資料庫的 Member 資料表應有以下資料", ((string)(null)), table10, "Then ");
 #line hidden
             }
             this.ScenarioCleanup();
@@ -176,41 +176,41 @@ this.ScenarioInitialize(scenarioInfo);
             else
             {
                 this.ScenarioStart();
-                TechTalk.SpecFlow.Table table5 = new TechTalk.SpecFlow.Table(new string[] {
+                TechTalk.SpecFlow.Table table11 = new TechTalk.SpecFlow.Table(new string[] {
                             "Email",
                             "Name",
                             "Age"});
-                table5.AddRow(new string[] {
+                table11.AddRow(new string[] {
                             "yao@aa.bb",
                             "yao",
                             "18"});
 #line 16
- testRunner.Given("資料庫Member已存在以下資料", ((string)(null)), table5, "Given ");
+ testRunner.Given("資料庫Member已存在以下資料", ((string)(null)), table11, "Given ");
 #line hidden
-                TechTalk.SpecFlow.Table table6 = new TechTalk.SpecFlow.Table(new string[] {
+                TechTalk.SpecFlow.Table table12 = new TechTalk.SpecFlow.Table(new string[] {
                             "Email",
                             "Name",
                             "Age"});
-                table6.AddRow(new string[] {
+                table12.AddRow(new string[] {
                             "yao@aa.bb1",
                             "yao1",
                             "19"});
 #line 19
- testRunner.Given("前端應傳來以下編輯請求資料", ((string)(null)), table6, "Given ");
+ testRunner.Given("前端應傳來以下編輯請求資料", ((string)(null)), table12, "Given ");
 #line hidden
 #line 22
  testRunner.When("調用編輯", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "When ");
 #line hidden
-                TechTalk.SpecFlow.Table table7 = new TechTalk.SpecFlow.Table(new string[] {
+                TechTalk.SpecFlow.Table table13 = new TechTalk.SpecFlow.Table(new string[] {
                             "Email",
                             "Name",
                             "Age"});
-                table7.AddRow(new string[] {
+                table13.AddRow(new string[] {
                             "yao@aa.bb1",
                             "yao1",
                             "19"});
 #line 23
- testRunner.Then("預期資料庫的 Member 資料表應有以下資料", ((string)(null)), table7, "Then ");
+ testRunner.Then("預期資料庫的 Member 資料表應有以下資料", ((string)(null)), table13, "Then ");
 #line hidden
             }
             this.ScenarioCleanup();
@@ -244,35 +244,35 @@ this.ScenarioInitialize(scenarioInfo);
             else
             {
                 this.ScenarioStart();
-                TechTalk.SpecFlow.Table table8 = new TechTalk.SpecFlow.Table(new string[] {
+                TechTalk.SpecFlow.Table table14 = new TechTalk.SpecFlow.Table(new string[] {
                             "ID",
                             "Email",
                             "Name",
                             "Age"});
-                table8.AddRow(new string[] {
+                table14.AddRow(new string[] {
                             "1",
                             "yao@aa.bb",
                             "yao",
                             "18"});
 #line 28
- testRunner.Given("資料庫Member已存在以下資料", ((string)(null)), table8, "Given ");
+ testRunner.Given("資料庫Member已存在以下資料", ((string)(null)), table14, "Given ");
 #line hidden
-                TechTalk.SpecFlow.Table table9 = new TechTalk.SpecFlow.Table(new string[] {
+                TechTalk.SpecFlow.Table table15 = new TechTalk.SpecFlow.Table(new string[] {
                             "ID"});
-                table9.AddRow(new string[] {
+                table15.AddRow(new string[] {
                             "1"});
 #line 31
- testRunner.Given("前端應傳來以下刪除請求資料", ((string)(null)), table9, "Given ");
+ testRunner.Given("前端應傳來以下刪除請求資料", ((string)(null)), table15, "Given ");
 #line hidden
 #line 34
  testRunner.When("調用刪除", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "When ");
 #line hidden
-                TechTalk.SpecFlow.Table table10 = new TechTalk.SpecFlow.Table(new string[] {
+                TechTalk.SpecFlow.Table table16 = new TechTalk.SpecFlow.Table(new string[] {
                             "Email",
                             "Name",
                             "Age"});
 #line 35
- testRunner.Then("預期資料庫的 Member 資料表應有以下資料", ((string)(null)), table10, "Then ");
+ testRunner.Then("預期資料庫的 Member 資料表應有以下資料", ((string)(null)), table16, "Then ");
 #line hidden
             }
             this.ScenarioCleanup();
@@ -306,74 +306,74 @@ this.ScenarioInitialize(scenarioInfo);
             else
             {
                 this.ScenarioStart();
-                TechTalk.SpecFlow.Table table11 = new TechTalk.SpecFlow.Table(new string[] {
+                TechTalk.SpecFlow.Table table17 = new TechTalk.SpecFlow.Table(new string[] {
                             "Id",
                             "Email",
                             "Name",
                             "Age"});
-                table11.AddRow(new string[] {
+                table17.AddRow(new string[] {
                             "1",
                             "yao@aa.bb1",
                             "yao1",
                             "18"});
-                table11.AddRow(new string[] {
+                table17.AddRow(new string[] {
                             "2",
                             "yao@aa.bb2",
                             "yao2",
                             "18"});
-                table11.AddRow(new string[] {
+                table17.AddRow(new string[] {
                             "3",
                             "yao@aa.bb3",
                             "yao3",
                             "18"});
-                table11.AddRow(new string[] {
+                table17.AddRow(new string[] {
                             "4",
                             "yao@aa.bb4",
                             "yao4",
                             "18"});
-                table11.AddRow(new string[] {
+                table17.AddRow(new string[] {
                             "5",
                             "yao@aa.bb5",
                             "yao5",
                             "18"});
 #line 39
- testRunner.Given("資料庫Member已存在以下資料", ((string)(null)), table11, "Given ");
+ testRunner.Given("資料庫Member已存在以下資料", ((string)(null)), table17, "Given ");
 #line hidden
-                TechTalk.SpecFlow.Table table12 = new TechTalk.SpecFlow.Table(new string[] {
+                TechTalk.SpecFlow.Table table18 = new TechTalk.SpecFlow.Table(new string[] {
                             "Email",
                             "Name",
                             "Age"});
-                table12.AddRow(new string[] {
+                table18.AddRow(new string[] {
                             "yao@aa.bb1",
                             "yao1",
                             "18"});
 #line 46
- testRunner.And("前端應傳來以下查詢請求資料", ((string)(null)), table12, "And ");
+ testRunner.And("前端應傳來以下查詢請求資料", ((string)(null)), table18, "And ");
 #line hidden
-                TechTalk.SpecFlow.Table table13 = new TechTalk.SpecFlow.Table(new string[] {
+                TechTalk.SpecFlow.Table table19 = new TechTalk.SpecFlow.Table(new string[] {
                             "PageSize",
                             "PageIndex"});
-                table13.AddRow(new string[] {
+                table19.AddRow(new string[] {
                             "10",
                             "0"});
 #line 49
- testRunner.And("前端應穿來以下GridState資料", ((string)(null)), table13, "And ");
+ testRunner.And("前端應穿來以下GridState資料", ((string)(null)), table19, "And ");
 #line hidden
 #line 52
  testRunner.When("調用查詢", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "When ");
 #line hidden
-                TechTalk.SpecFlow.Table table14 = new TechTalk.SpecFlow.Table(new string[] {
+                TechTalk.SpecFlow.Table table20 = new TechTalk.SpecFlow.Table(new string[] {
                             "ID",
                             "Email",
                             "Name",
                             "Age"});
-                table14.AddRow(new string[] {
+                table20.AddRow(new string[] {
                             "1",
                             "yao@aa.bb1",
                             "yao1",
                             "18"});
 #line 53
- testRunner.Then("預期查詢結果有以下資料", ((string)(null)), table14, "Then ");
+ testRunner.Then("預期查詢結果有以下資料", ((string)(null)), table20, "Then ");
 #line hidden
             }
             this.ScenarioCleanup();

@@ -1,13 +1,7 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Net;
-using System.Net.Http;
+﻿using System.Collections.Generic;
 using System.Threading;
 using System.Threading.Tasks;
 using System.Web.Http;
-using Newtonsoft.Json;
-using Newtonsoft.Json.Linq;
 using THS.Workshop.Infrastructure.DomainModel.Member;
 using THS.Workshop.Infrastructure.Logic;
 
@@ -27,15 +21,22 @@ namespace THS.Workshop.WebApi.Controllers
             return "value";
         }
 
-        [HttpPost]
+        //[HttpPost]
         // POST: api/Member
-        public  async Task<IHttpActionResult> Post(InsertRequest request)
+        public async Task<IHttpActionResult> Post(InsertRequest request)
         {
             var memberWorkflow = new MemberWorkflow();
-            var result         = await memberWorkflow.Insert(request, CancellationToken.None);
+            var result = await memberWorkflow.Insert(request, CancellationToken.None);
 
             return this.Ok(result);
         }
 
-            }
+        [HttpPut]
+        public async Task<IHttpActionResult> Put(UpdateRequest request)
+        {
+            var service = new MemberWorkflow();
+            var result = await service.UpdateAsync(request, CancellationToken.None);
+            return this.Ok(result);
+        }
+    }
 }
