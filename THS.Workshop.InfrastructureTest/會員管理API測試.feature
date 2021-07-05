@@ -67,4 +67,7 @@ Scenario: 查詢會員資料
 	Then 預期HttpStatusCode為200
 	Then 預期查詢結果有以下資料
 	| ID | Email	 | Name  | Age |
+	| 1	 | yao@aa.bb1| yao1  | 18  |
+	And 預期查詢結果有以下資料use actualOld
+	| ID | Email	 | Name  | Age |
 	| 1	 | yao@aa.bb1| yao1  | 18  | 

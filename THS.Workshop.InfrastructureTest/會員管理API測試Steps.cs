@@ -106,18 +106,28 @@ namespace THS.Workshop.InfrastructureTest
             var json = JsonConvert.SerializeObject(data);
             //Console.WriteLine(json);
 
-            var requestMessage = new HttpRequestMessage(HttpMethod.Get, $"{url}?{json}");
+            var requestMessage = new HttpRequestMessage(HttpMethod.Get, $"{url}?request={json}");
             //{
             //    Content = new StringContent(json, Encoding.UTF8, "application/json")
-            //};
+            //};<---System.Net.ProtocolViolationException: Cannot send a content-body with this verb-type.
 
-            //var response = SpecflowHook.s_client.SendAsync(requestMessage).Result;
+            var responseOld = SpecflowHook.s_client.SendAsync(requestMessage).Result;
             var response = SpecflowHook.s_client.GetAsync($"{url}?request={json}").Result;
             this.ScenarioContext.Set(response.StatusCode, "statusCode");
 
             var actual = response.Content.ReadAsAsync<IEnumerable<Member>>().Result;
             this.ScenarioContext.Set(actual, "actual");
+
+            this.ScenarioContext.Set(responseOld.Content.ReadAsAsync<IEnumerable<Member>>().Result, "actualOld");
         }
+
+        [Then(@"預期查詢結果有以下資料use actualOld")]
+        public void Then預期查詢結果有以下資料UseActualOld(Table expected)
+        {
+            var actualOld = this.ScenarioContext.Get<List<Member>>("actualOld");
+            expected.CompareToSet(actualOld);
+        }
+
 
         [When(@"DoNothing")]
         public void WhenDoNothing()

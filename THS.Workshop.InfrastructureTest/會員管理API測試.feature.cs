@@ -464,6 +464,19 @@ this.ScenarioInitialize(scenarioInfo);
 #line 68
  testRunner.Then("預期查詢結果有以下資料", ((string)(null)), table15, "Then ");
 #line hidden
+                TechTalk.SpecFlow.Table table16 = new TechTalk.SpecFlow.Table(new string[] {
+                            "ID",
+                            "Email",
+                            "Name",
+                            "Age"});
+                table16.AddRow(new string[] {
+                            "1",
+                            "yao@aa.bb1",
+                            "yao1",
+                            "18"});
+#line 71
+ testRunner.And("預期查詢結果有以下資料use actualOld", ((string)(null)), table16, "And ");
+#line hidden
             }
             this.ScenarioCleanup();
         }
